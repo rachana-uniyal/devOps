@@ -1,13 +1,13 @@
-** ## Linux Mint Virtual Machine**
+**Linux Mint Virtual Machine** </br>
 Create a Linux Mint Virtual Machine on your computer. Check the distribution, which package manager it uses (yum, apt, apt-get). Which CLI editor is configured (Nano, Vi, Vim). What software center/software manager it uses. Which shell is configured for your user.
 
 
-SOLUTION:
+> SOLUTION:
 
-Step1: Download Linux Mint ISO file from https://linuxmint.com/download.php
-Step2: Verify ISO image by following steps mentioned here https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html
-Step3: Install VirtualBox from Ubuntu Softwares
-Step4: Install linux mint on virtual box.
+>> Step1: Download Linux Mint ISO file from https://linuxmint.com/download.php
+>> Step2: Verify ISO image by following steps mentioned here https://linuxmint-installation-guide.readthedocs.io/en/latest/verify.html
+>> Step3: Install VirtualBox from Ubuntu Softwares
+>> Step4: Install linux mint on virtual box.
 
 1. Checking distribution of OS
  cat /etc/os-release
