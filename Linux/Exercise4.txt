@@ -1,0 +1,19 @@
+Extend the previous script (Exercise3) to ask for a user input for sorting the processes output either by memory or CPU consumption, 
+and print the sorted list.
+
+Solution
+
+#!/bin/bash
+
+echo -n "Would you like to sort the processes output by memory or CPU? (m/c) "
+read sortby
+
+if [ "$sortby" = "m" ]
+then
+    ps aux --sort -rss | grep -i `whoami`
+elif [ "$sortby" = "c" ]
+then
+    ps aux --sort -%cpu | grep -i `whoami`
+else
+    echo "No input provided. Exiting"
+fi
