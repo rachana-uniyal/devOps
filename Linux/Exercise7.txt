@@ -2,8 +2,39 @@ Extend the script (Exercise 6) to check after running the application that the a
 and prints out the application's running process and the port where it's listening. 
 
 
+Solution:
 
+#!/bin/bash
 
+apt install -y nodejs npm curl net-tools
+
+# display nodeJS version
+node_version=$(node --version)
+echo "NodeJS version $node_version installed"
+
+# display npm version
+npm_version=$(npm --version)
+echo "NPM version $npm_version installed"
+
+# fetch NodeJS project archive from s3 bucket
+wget https://node-envvars-artifact.s3.eu-west-2.amazonaws.com/bootcamp-node-envvars-project-1.0.0.tgz
+
+# extract the project archive to ./package folder
+tar zxvf ./bootcamp-node-envvars-project-1.0.0.tgz
+
+# set all needed environment variables
+export APP_ENV=dev
+export DB_PWD=mysecret
+export DB_USER=myuser
+
+# change to package directory
+cd package
+
+# install application dependencies
+npm install
+
+# start the nodejs application in the background
+node server.js &
 
 
 # display that nodejs process is running
