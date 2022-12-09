@@ -1,0 +1,13 @@
+Extend the script (Exercise 6) to check after running the application that the application has successfully started 
+and prints out the application's running process and the port where it's listening. 
+
+
+
+
+
+
+# display that nodejs process is running
+ps aux | grep node | grep -v grep
+
+# display that nodejs is running on port 3000
+netstat -ltnp | grep :3000
