@@ -48,6 +48,7 @@ tar zxvf ./bootcamp-node-envvars-project-1.0.0.tgz
 export APP_ENV=dev
 export DB_PWD=mysecret
 export DB_USER=myuser 
+export LOG_DIR=$LOG_DIRECTORY
 
 # change to package directory
 cd package
