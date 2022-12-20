@@ -1,0 +1,12 @@
+EXERCISE 9: Merge
+This time you want to merge your branch directly into master without merge request. So:
+
+merge your bugfix branch into master using git CLI (Hint: master branch must be up-to-date before the merge)
+Being on the master branch now. Push your merge commit to remote repository
+
+Solution:
+
+# merge bugfix branch into master
+git checkout master
+git merge bugfix/changes
+
