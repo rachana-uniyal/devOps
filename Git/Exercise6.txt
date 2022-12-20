@@ -1,0 +1,33 @@
+EXERCISE 6: Fix merge conflict
+You are on the bugfix branch. You notice the logger library version is old, so:
+
+Update it to version 6.2 (Change the same location in bugfix branch)
+Some time went by since you opened your bugfix branch, so you want the up-to-date master state to avoid major conflicts.
+
+Merge the master branch in your bugfix branch - fix the merge conflict!
+
+
+Solution:
+
+# switch to bugfix branch
+git checkout bugfix/changes
+
+# in build.gradle file, line 18, locate the "logstash-logback-encoder" library 
+# change version from '5.2' to '6.2'
+compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.2'
+
+# commit change locally
+git add .
+git commit -m "upgrade logger library version"
+
+# bring bugfix branch uptodate with master branch. Alternatively do the merge from Gitlab UI
+git merge master
+
+# you will get a merge conflict here for build.gradle file, like 18, logback library version 
+
+# fix merge conflict and when done check the state
+git status
+
+# if all fixed, you can commit and push the merge into your bugfix branch
+git push
+
