@@ -1,0 +1,13 @@
+EXERCISE 5: Merge request
+You are done with the feature, now it needs to be tested and deployed. So:
+
+Merge your feature branch into master (using a merge request)
+
+Solution:
+
+# merge feature branch into master. Alternatively do the merge from Gitlab UI
+git checkout master
+git merge feature/changes 
+
+# push the merge to remote master
+git push
