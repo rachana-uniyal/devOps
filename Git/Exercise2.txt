@@ -1,0 +1,24 @@
+
+EXERCISE 2: .gitignore
+You see that build folders and editor specific folders are in the repository and decide to ignore it as a best practice.
+
+Ignore .idea folder, .DS_Store folders
+
+Solution
+
+# create .gitignore file
+vim .gitignore
+# insert file and folder name
+
+
+git rm --cached .DS_Store
+
+# -r for directories
+git rm -r --cached .idea
+
+# commit & push the changes
+git add .
+git commit -m "remove files to ignore"
+git push
+
+
