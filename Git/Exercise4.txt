@@ -1,0 +1,27 @@
+EXERCISE 4 - Bugfix branch
+You find out there is a bug in your project, so you need to fix it using a new bugfix branch:
+
+Create a new bugfix branch
+Fix the spelling error in Application.java file
+You are done with the changes. So:
+
+Check your changes using "git diff" and
+Commit them if everything is correct.
+Push your changes to your remote repository.
+
+Solution:
+
+# create bugfix branch
+git checkout -b bugfix/changes
+
+# in Application.java file in src/main/java/com, line 22, fix the spelling error
+log.info("Java app started");
+
+# check and commit  changes
+git diff
+git add .
+git commit -m "Fix spelling error"
+
+# pull remote changes and push your changes to remote
+git pull 
+git push
