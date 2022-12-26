@@ -1,0 +1,14 @@
+EXERCISE 3: Clean and build App
+You fixed the test. Now:
+
+clean the build folder with gradle clean and
+try to build jar file again
+
+Solution
+
+# locate AppTest.java file in src/test/java folder, line 22 & fix test
+boolean result = myApp.getCondition(true); 
+
+# run tests
+./gradlew test
+
