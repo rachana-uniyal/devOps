@@ -1,0 +1,13 @@
+EXERCISE 2: Run tests
+Fix the test, by changing "true" string to true boolean.
+Run gradle test to execute only the tests and check the fix.
+
+
+Solution
+
+# locate AppTest.java file in src/test/java folder, line 22 & fix test
+boolean result = myApp.getCondition(true); 
+
+# run tests
+./gradlew test
+
