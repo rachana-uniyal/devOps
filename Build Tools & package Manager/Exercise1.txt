@@ -1,0 +1,10 @@
+EXERCISE 1: Build jar artifact
+You want to deploy the artifact to share that library with all team members. So:
+
+try to build the jar file
+The Build will fail, because of a compile error in a test, so you can't build the jar.
+
+
+Solution
+
+./gradlew build
