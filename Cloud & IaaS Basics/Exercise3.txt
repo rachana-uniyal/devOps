@@ -1,0 +1,10 @@
+EXERCISE 3: Prepare server to run Node App
+Now you have a new fresh server nothing installed on it. Because you want to run a NodeJS application you need to install Node and npm on it:
+
+Install nodejs & npm on it
+
+Solution:
+
+
+# install nodejs and npm
+apt install -y nodejs npm
