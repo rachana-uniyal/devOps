@@ -1,0 +1,4 @@
+EXERCISE 2: Create a new server
+Your company uses DigitalOcean as Infrastructure as a Service platform, instead of having on-premise servers. So you:
+
+Create a new droplet server on DigitalOcean
