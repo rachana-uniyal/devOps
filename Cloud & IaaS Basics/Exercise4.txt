@@ -1,0 +1,11 @@
+
+EXERCISE 4: Copy App and package.json
+Having everything prepared for the application, you finally:
+
+Copy your simple Nodejs app tar file and package.json to the droplet
+
+Solution:
+
+# secure copy files from local machine to server. Execute from project's root folder.
+scp -i ~/id_rsa app/bootcamp-node-project-1.0.0.tgz root@143.110.177.178:/root
+scp -i ~/id_rsa app/package.json root@143.110.177.178:/root
