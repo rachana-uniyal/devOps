@@ -1,0 +1,26 @@
+EXERCISE 2: Create npm hosted repository
+For a Node application you:
+
+create a new npm hosted repository with a new blob store
+
+
+EXERCISE 3: Create user for team 1
+You create Nexus user for the project 1 team to have access to this npm repository
+
+
+EXERCISE 4: Build and publish npm tar
+You want to test that the project 1 user has correct access configured. So you:
+
+build and publish a nodejs tar package to the npm repo
+
+Solution:
+
+# build npm tar
+npm pack
+
+# login to repo
+npm login --registry=http://165.22.213.185:8081/repository/my-npm/
+
+
+# publish repo
+pm publish --registry=http://165.22.213.185:8081/repository/my-npm/
