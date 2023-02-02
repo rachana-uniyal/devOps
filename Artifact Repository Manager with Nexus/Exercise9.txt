@@ -1,0 +1,26 @@
+EXERCISE 9: Automate
+You decide to automate the fetching from Nexus and starting the application So you:
+
+Write a script that fetches the latest version from npm repository. Untar it and run on the server!
+Execute the script on the droplet
+
+Solution:
+
+# save the artifact details in a json file
+curl -u commonuser:common9898 -X GET 'http://165.22.213.185:8081/service/rest/v1/components?repository=my-npm' | jq "."  > artifact.json
+
+# grab the download url from the saved artifact details using 'jq' json processor tool
+artifactDownloadUrl=$(jq '.items[].assets[].downloadUrl' artifact.json --raw-output)
+
+# fetch the artifact with the extracted download url using 'wget' tool
+wget --http-user=commonuser --http-password=common9898 $artifactDownloadUrl
+
+# untar
+tar -xvf bootcamp-node-project-1.0.0.tgz
+
+# install
+apt install nodejs
+npm install
+
+#run
+npm start
