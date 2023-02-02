@@ -19,6 +19,7 @@ wget --http-user=commonuser --http-password=common9898 $artifactDownloadUrl
 tar -xvf bootcamp-node-project-1.0.0.tgz
 
 # install
+cd package
 apt install nodejs
 npm install
 
