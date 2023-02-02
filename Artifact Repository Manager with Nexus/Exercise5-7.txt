@@ -1,0 +1,51 @@
+EXERCISE 5: Create maven hosted repository
+For a Java application you:
+
+create a new maven hosted repository
+
+
+EXERCISE 6: Create user for team 2
+You create a Nexus user for project 2 team to have access to this maven repository
+
+
+EXERCISE 7: Build and publish jar file
+You want to test that the project 2 user has the correct access configured and also upload the first version. So:
+
+build and publish the jar file to the new repository using the team 2 user.
+
+Solution:
+
+# add following to build.gradle file
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications{
+        maven(MavenPublication){
+            artifact("build/libs/my-app-$version"+".jar"){
+                extension 'jar'
+            }
+        }
+    }
+    
+    repositories{
+        maven{
+            name = 'nexus'
+            url = 'http://165.22.213.185:8081/repository/maven-snapshots/'
+            allowInsecureProtocol = true
+            credentials{
+                username = project.repoUser
+                password = project.repoPassword
+            }
+        }
+
+    }
+}
+
+# add ucer credentials to gradle.properties file.
+
+# build jar file
+./gradlew build
+
+# pblish jar file to nexus repo
+./gradlew publish
