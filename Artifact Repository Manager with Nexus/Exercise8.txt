@@ -1,0 +1,20 @@
+EXERCISE 8: Download from Nexus and start application
+
+Create new user for droplet server that has access to both repositories
+On a digital ocean droplet, using Nexus Rest API, fetch the download URL info for the latest NodeJS app artifact
+Execute a command to fetch the latest artifact itself with the download URL
+Untar it and run on the server!
+
+Solution:
+
+# using Nexus Rest API, fetch the download URL info for the latest NodeJS app artifact
+curl -u commonuser:common9898 -X GET 'http://165.22.213.185:8081/service/rest/v1/components?repository=my-npm'
+
+#  Execute a command to fetch the latest artifact itself with the download URL
+wget --http-user=team1 --http-password=Myteam@9090 http://165.22.213.185:8081/repository/my-npm/bootcamp-node-project/-/bootcamp-node-project-1.0.0.tgz
+
+# Untar file
+tar -xvf bootcamp-node-project-1.0.0.tgz
+
+# run program
+npm start
