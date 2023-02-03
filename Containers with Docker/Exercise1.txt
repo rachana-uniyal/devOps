@@ -1,0 +1,9 @@
+EXERCISE 1: Start Mysql container
+First you want to test the application locally with mysql database. But you don't want install Mysql, you want to get started fast, so you start it as a docker container.
+
+Start mysql container locally using the official Docker image. Set all needed environment variables.
+Export all needed environment variables for your application for connecting with the database (check variable names inside the code)
+Build jar file and start the application. Test access from browser. Make some change.
+
+Solution:
+
