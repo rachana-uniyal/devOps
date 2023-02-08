@@ -1,0 +1,21 @@
+EXERCISE 2: Start Mysql GUI container
+Now you have a database, you want to be able to see the database data using a UI tool, so you decide to deploy phpmyadmin. Again, you don't want to install it locally, so you want to start it also as a docker container.
+
+Start phpmyadmin container using the official image.
+Access your phpmyadmin from browser and test logging in to your Mysql database
+
+Solution:
+
+# start phpmyadmin container using the official image
+docker run -p 8083:80 \
+--name phpmyadmin \
+--link mysql:db \
+-d phpmyadmin/phpmyadmin
+
+# access it in the browser on
+localhost:8083
+
+# login to phpmyadmin UI with either of 2 mysql user credentials:
+* admin:adminpass
+* root:rootpass
+
