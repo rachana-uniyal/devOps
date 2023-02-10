@@ -1,0 +1,17 @@
+EXERCISE 4: Dockerize your Java Application
+Now you are done with testing the application locally with Mysql database and want to deploy it on the server to make it accessible for others in the team, so they can edit information.
+
+And since your DB and DB UI are running as docker containers, you want to make your app also run as a docker container. So you can all start them using 1 docker-compose file on the server. So you do the following:
+
+Create Dockerfile for your java application
+
+
+Solution:
+
+FROM openjdk:8-jdk-alpine
+EXPOSE 8080
+RUN mkdir /opt/app
+COPY build/libs/bootcamp-java-mysql-project-1.0-SNAPSHOT.jar /opt/app
+WORKDIR /opt/app
+CMD ["java", "-jar", "bootcamp-java-mysql-project-1.0-SNAPSHOT.jar"]
+
