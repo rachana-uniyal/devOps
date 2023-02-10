@@ -1,0 +1,18 @@
+EXERCISE 5: Build and push Java Application Docker Image
+Now for you to be able to run your java app as a docker image on a remote server, it must be first hosted on a docker repository, so you can fetch it from there on the server. Therefore, you have to do the following:
+
+Create docker hosted repository on Nexus
+Build the image locally and push to the repository
+
+
+Solution:
+
+# create jar file - bootcamp-java-mysql-project-1.0-SNAPSHOT.jar
+./gradlew build
+
+# create docker image - {repo-name}/{image-name}:{image-tag}
+docker build -t {repo-name}/java-app:1.0-SNAPSHOT .
+
+# push docker to remote docker repo {repo-name}
+docker push {repo-name}/java-app:1.0-SNAPSHOT
+
