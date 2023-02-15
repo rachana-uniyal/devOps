@@ -8,7 +8,7 @@ Build jar file and start the application. Test access from browser. Make some ch
 Solution:
 
 # start mysql container using docker
-docker run -p 3306:3306 \
+docker run -p 3366:3306 \
 --name mysql \
 -e MYSQL_ROOT_PASSWORD=rootpass \
 -e MYSQL_DATABASE=team-member-projects \
