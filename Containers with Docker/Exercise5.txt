@@ -11,8 +11,9 @@ Solution:
 ./gradlew build
 
 # create docker image - {repo-name}/{image-name}:{image-tag}
-docker build -t uniyalrachna/java-app:1.0-SNAPSHOT .
+docker build -t 139.59.43.122:8083/java-app:1.0-SNAPSHOT .
 
 # push docker to remote docker repo {repo-name}
-docker push uniyalrachna/java-app:1.0-SNAPSHOT
+docker push 139.59.43.122:8083/java-app:1.0-SNAPSHOT
+
 
