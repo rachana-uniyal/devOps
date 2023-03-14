@@ -1,0 +1,17 @@
+EXERCISE 3: Manually deploy new Docker Image on server
+After the pipeline has run successfully, you:
+
+Manually deploy the new docker image on the droplet server.
+
+
+Solution:
+
+# ssh into your droplet server
+ssh -i ~/id_rsa root@{server-ip-address}
+
+# login to your docker hub registry
+docker login
+
+# pull and run the new docker image from registry
+docker run -p 3000:3000 {docker-hub-id}/myapp:{image-name}
+
