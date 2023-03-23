@@ -1,0 +1,82 @@
+EXERCISE 9: Configure automatic triggering of multi-branch pipeline
+
+Your team members are creating branches to add new features to the application or fix stuff, 
+so you don't want to build and deploy all these half-done features or bug fixes. You want to build and deploy only the master branch. 
+All other branches should only run tests. Add this logic to the Jenkinsfile.
+
+Add branch based logic to Jenkinsfile
+Add webhook to trigger pipeline automatically
+
+
+Solution:
+
+
+# when the currently building branch is master, execute all steps. If it's not master, execute only the "run tests" step
+
+Jenkinsfile
+
+pipeline {
+    agent any
+      tools {
+        nodejs "node"
+      }
+      stages {
+        stage('increment version') {
+          when {
+            expression {
+              return env.GIT_BRANCH == "master"
+            }
+          }
+          steps {
+            script {
+                ...  
+            }
+          }
+        }
+        stage('Run tests') {
+          steps {
+            script {
+                ...  
+            }
+          }
+        }
+        stage('Build and Push docker image') {
+          when {
+            expression {
+              return env.GIT_BRANCH == "master"
+            }
+          }
+          steps {
+            script {
+                ...  
+            }
+          }
+        }
+        stage('deploy to EC2') {
+          when {
+            expression {
+              return env.GIT_BRANCH == "master"
+            }
+          }
+          steps {
+            script {
+                ...  
+            }
+          }
+        }
+        stage('commit version update') {
+          when {
+            expression {
+              return env.GIT_BRANCH == "master"
+            }
+          }
+          steps {
+            script {
+                ...  
+            }
+          }  
+        }
+    }     
+}
+
+
