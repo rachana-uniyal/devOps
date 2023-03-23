@@ -1,0 +1,13 @@
+EXERCISE 2: Configure AWS CLI
+You want to use the AWS CLI for the following tasks. So, to be able to interact with the AWS account from the AWS Command Line tool you need to configure it correctly:
+
+Set credentials for that user for AWS CLI
+Configure correct region for your AWS CLI
+
+Solution:
+
+$ aws configure
+AWS Access Key ID [****]: new-access-key-id
+AWS Secret Access Key [****]: new-secret-access-key
+Default region name [us-west-1]: new-region
+Default output format [None]: json
