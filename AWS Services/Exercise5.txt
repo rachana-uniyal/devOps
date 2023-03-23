@@ -1,0 +1,16 @@
+EXERCISE 5: SSH into the server and install Docker on it
+Once the EC2 instance is created successfully, you want to prepare the server to run Docker containers. So you:
+
+ssh into the server and
+install Docker on it to run the dockerized application later
+
+
+
+Solution:
+
+ssh -i "WebServerKeyPair.pem" ec2-user@public-ip-address
+
+# Install Docker, start docker service and allow ec2-user to run docker commands without sudo by adding it to docker group
+sudo yum update -y && sudo yum install -y docker
+sudo systemctl start docker 
+sudo usermod -aG docker ec2-user
