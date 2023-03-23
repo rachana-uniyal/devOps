@@ -1,0 +1,20 @@
+EXERCISE 8: Configure access from browser (EC2 Security Group)
+
+After executing the Jenkins pipeline successfully, the application is deployed, but you still can't access it from the browser. 
+Again, you need to open the correct port on the server. For that you:
+
+Configure EC2 security group to access your application from browser (using AWS CLI)
+
+Solution:
+
+#Open application's port 3000 in security group to make app accessible from browser
+
+aws ec2 authorize-security-group-ingress --group-id sg-id --protocol tcp --port 3000 --cidr 0.0.0.0/0
+
+
+
+
+
+
+
+
