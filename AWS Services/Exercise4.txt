@@ -1,0 +1,23 @@
+EXERCISE 4: Create EC2 Instance
+Once the VPC is created, you:
+
+Create an EC2 instance in that VPC
+with the security group you just created and ssh key file (using the AWS CLI)
+
+
+Solution:
+
+
+aws ec2 create-key-pair --key-name WebServerKeyPair --query "KeyMaterial" --output text > WebServerKeyPair.pem
+chmod 400 WebServerKeyPair.pem
+
+# creating EC2 instance
+
+aws ec2 run-instances --image-id ami-a4827dc9 --count 1 --instance-type t2.micro --key-name WebServerKeyPair --security-group-ids sg-0e2fa5e0d47dcec0b --subnet-id subnet-0263ce9ee2194ee54
+
+# Validate that EC2 instance is in a running state, and get its public ip address to connect via ssh
+aws ec2 describe-instances --instance-id i-09c4592c95b7e2b5a --query "Reservations[*].Instances[*].{State:State.Name,Address:PublicIpAddress}"
+
+
+
+
