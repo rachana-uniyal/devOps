@@ -1,0 +1,129 @@
+EXERCISE 8: Create Helm Chart for Java App
+
+All config files: service, deployment, ingress, configMap, secret, will be part of the chart
+Create custom values file as an example for developers to use when deploying the application
+Deploy the java application using the chart with helmfile
+Host the chart in its own git repository
+
+Solution:
+
+file "db-config.yaml"
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  # check the name of the mysql service with 'kubectl get svc' command
+  db_server: my-release-mysql-primary.default
+  
+  
+file "db-secret.yaml"
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secret
+type: Opaque
+data:
+  # my-user  
+  db_user: 
+  # my-pass
+  db_pwd: 
+  # my-app-db
+  db_name: 
+  # secret-root-pass
+  db_root_pwd:
+  
+file "java-app-deployment.yaml"
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app-deployment
+  labels:
+    app: java-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: java-app
+  template:
+    metadata:
+      labels:
+        app: java-app
+    spec:
+      imagePullSecrets:
+      - name: my-registry-key
+      containers:
+      - name: javamysqlapp
+        image: nanajanashia/demo-app:java-mysql-app
+        ports:
+        - containerPort: 8080
+        env:
+         - name: DB_USER
+           valueFrom:
+             secretKeyRef:
+               name: db-secret
+               key: db_user
+         - name: DB_PWD
+           valueFrom:
+             secretKeyRef:
+               name: db-secret
+               key: db_pwd
+         - name: DB_NAME
+           valueFrom:
+             secretKeyRef:
+               name: db-secret
+               key: db_name
+         - name: DB_SERVER
+           valueFrom:
+             configMapKeyRef:
+              name: db-config
+              key: db_server
+
+file "java-app-service.yaml"
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-app-service
+spec:
+  selector:
+    app: java-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+
+file "java-app-ingress.yaml"
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: java-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: 
+    http:
+      paths:
+      - backend:
+          service:
+            name: java-app-service
+            port: 
+              number: 8080
+        pathType: Exact
+        path: /
+        
+        
+add correct values in values-override.yaml
+add default values in values.yaml
+
+helm install my-cool-java-app java-app -f java-app/values-deploy.yaml
+
+
+
+
+
