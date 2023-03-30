@@ -1,0 +1,6 @@
+EXERCISE 5: Deploy Ingress Controller
+Deploy Ingress Controller in the cluster - using Helm
+
+Solution:
+
+minikube addons enable ingress 
