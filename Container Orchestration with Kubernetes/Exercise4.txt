@@ -1,0 +1,61 @@
+EXERCISE 4: Deploy phpmyadmin
+As a next step you
+
+deploy phpmyadmin to access Mysql UI.
+For this deployment you just need 1 replica, since this is only for your own use,
+so it doesn't have to be High Availability. A simple deployment.yaml file and internal service will be enough.
+
+
+Solution:
+
+Create file phpmyadmin.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  labels:
+    app: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin/phpmyadmin:5
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: PMA_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_server
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db_root_pwd
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin-service
+spec:
+  selector:
+    app: phpmyadmin
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 80
+
+
+kubectl apply -f phpmyadmin.yaml
