@@ -1,0 +1,36 @@
+EXERCISE 6: Create Ingress rule
+Create Ingress rule for your application access
+
+Solution:
+
+create file java-app-ingress.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: java-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: "my-java-app.com"
+spec:
+  rules:
+  - host: host-name-here
+    http:
+      paths:
+      - backend:
+          service:
+            name: java-app-service
+            port: 
+              number: 8080
+        pathType: Exact
+        path: /
+
+
+
+
+
+
+get minikube ip address with command minikube ip
+add ip my-java-app.com in /etc/hosts file
+create ingress component: kubectl apply -f java-app-ingress.yaml
+
+access application from browser on address: my-java-app.com
