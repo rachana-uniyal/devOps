@@ -1,0 +1,7 @@
+EXERCISE 1: Create EKS cluster
+You decide to create an EKS cluster - the managed Kubernetes Service of AWS. To simplify the whole creation and configurations, you use eksctl.
+
+With eksctl you create an EKS cluster with 3 Nodes and 1 Fargate profile
+
+Solution:
+
