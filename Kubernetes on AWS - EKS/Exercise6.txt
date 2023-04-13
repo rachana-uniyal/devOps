@@ -1,0 +1,13 @@
+EXERCISE 6: Configure Autoscaling
+Now your application is running, whenever a change is made, it gets automatically deployed in the cluster etc. This is great, but you notice that most of the time the 3 nodes you have are underutilized, especially at the weekends, because your containers aren't using that much resources. However, your company is paying the full price for all the servers.
+
+So you suggest to your manager, that you will be able to save the company some infrastructure costs, by configuring autoscaling. Your manager is happy about that and asks you to configure it.
+
+So go ahead and configure autoscaling to scale down to minimum 1 node when servers are underutilized and maximum 3 nodes when in full use.
+
+
+Solution:
+
+1. Create custom policy and attached it to node group IAM role.
+2. Edit node group to have minimum 1 node and maximum 3 nodes.
+2. deploy k8s autoscaler.
