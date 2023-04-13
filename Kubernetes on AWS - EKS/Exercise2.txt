@@ -1,0 +1,33 @@
+EXERCISE 2: Deploy Mysql and phpmyadmin
+You deploy mysql and phpmyadmin on EC2 nodes with the same setup as before.
+
+Solution:
+
+# clone this repository locally
+git clone git@gitlab.com:devops-bootcamp3/bootcamp-java-mysql.git
+
+# check out the solutions branch
+git checkout feature/solutions
+
+# change to k8s-deployment folder
+cd k8s-deployment
+
+# install Mysql chart 
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install my-release bitnami/mysql -f mysql-chart-values-eks.yaml
+
+# deploy phpmyadmin with its configuration for Mysql DB access
+kubectl apply -f db-config.yaml
+kubectl apply -f db-secret.yaml
+kubectl apply -f phpmyadmin.yaml
+
+# access phpmyadmin and login to mysql db
+kubectl port forward svc/phpmyadmin-service 8081:8081
+
+# access in browser on
+localhost:8081
+
+# login with one of these 2 credentials
+"my-user" : "my-pass"
+"root" : "secret-root-pass"
+
