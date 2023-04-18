@@ -1,0 +1,14 @@
+EXERCISE 1: Working with Subnets in AWS
+Get all the subnets in your default region
+Print the subnet Ids
+
+Solution:
+
+import boto3
+
+ec2 = boto3.client('ec2')
+subnets = ec2.describe_subnets()
+for subnet in subnets["Subnets"]:
+    if subnet["DefaultForAz"]:
+        print(subnet["SubnetId"])
+
